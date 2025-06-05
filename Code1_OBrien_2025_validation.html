@@ -86,7 +86,7 @@ XBin = linspace(0,max(X1),100);
 %% 
 % Non-linear regression of different random variables
 % 
-% EWgX can be translated to the conditional expectation of W given X ($\langle 
+% EWgX is the conditional expectation of W given X ($\langle 
 % W|X\rangle$)
 
 EWgX = create_curve(W',X',XBin);    % Relation between the true value and measurement if it had no uncertainty (45 degree line)
@@ -95,12 +95,11 @@ EWgX1 = create_curve(W',X1',XBin);  % Expectation of the true value given the er
 EW1gX1 = create_curve(W1',X1',XBin); % Expectation of an erroneous measurement with another erroneous measurement
 
 %% 
-% Figure shows the summar of the relation between the measurement and true value 
+% Figure shows the summary of the relation between the measurement and true value 
 % for our assumed error model. 
 % 
-% They show a log-normal distribution, heteroskedatic uncertainty, and a non-linear 
+% They show a log-normal distribution, heteroskedastic uncertainty, and a non-linear 
 % regression bias that makes true value
-% 
 % vary with the erroneous measurement. 
 
 f2 = figure;
@@ -132,7 +131,6 @@ options = fitoptions('Method', 'LinearLeastSquares','Robust','LAR');
     lX1blp = (1-lamda).*mean(lX) + lamda*lX1; %Best linear predictor, with correct measure of uncertainty in log-space
 
     fit_LLSE_l2 = fit(lX1blp',lX','poly1',options);
-
 %% 
 % Section 3.2 Modifying the log-linear regression bias correction by calculating 
 % bias at every measurement and
